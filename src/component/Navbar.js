@@ -5,7 +5,9 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={styles.title}>Spendify</li>
+        <li className={styles.title}>
+          <Link to="/">Spendify</Link>
+        </li>
 
         <li>
           <Link to="/login">Login</Link>
