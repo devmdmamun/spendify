@@ -1,15 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useLogin } from "../../hooks/useLogin";
-import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isPending } = useLogin();
-  const { user } = useAuthContext();
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +38,6 @@ export default function Login() {
         </button>
       )}
       {error && <p>{error}</p>}
-      {user && navigate("/")}
     </form>
   );
 }
