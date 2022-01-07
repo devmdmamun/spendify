@@ -1,12 +1,16 @@
 import styles from "./Signup.module.css";
 import { useSignup } from "../../hooks/useSignup";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, isPending, error } = useSignup();
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,6 +50,7 @@ export default function Signup() {
       {!isPending && <button className="btn">Sign up</button>}
       {isPending && <button className="btn">loading</button>}
       {error && <p>{error}</p>}
+      {user && navigate("/")}
     </form>
   );
 }
